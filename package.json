@@ -1,0 +1,13 @@
+{
+  "name": "sam-bot",
+  "version": "1.0.0",
+  "description": "Raise the Gates",
+  "main": "bot.js",
+  "author": "NorthByNorthwest",
+  "dependencies": {
+    "discord.io": "https://github.com/woor/discord.io/tarball/gateway_v6",
+    "request": "^2.88.0",
+    "to-zalgo": "^1.0.1",
+    "winston": "^3.2.1"
+  }
+}

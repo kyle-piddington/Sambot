@@ -153,24 +153,42 @@ var compliments =shuffle(
 "You’re really something special.",
 "You’re a gift to those around you.",
 ]);
+
+var rudebritishisms = 
+[
+"Bollocks: technically means \"balls,\" but often describes something seen as extremely negative or lacking in value; e.g. \"total shit.\"",
+"\"Bugger off!\": \"Go away!\" or \"Leave me alone!\" (Note: Bugger, used on its own, is akin to \"Fuck!\" or \"Shit!\")",
+"Crusty Dragon: a piece of snot or booger.",
+"\"Get stuffed!\": \"Beat it\" or \"Scram!\"",
+"John Thomas: penis.",
+"Pavement Pizza: euphemism for puke or vomit.",
+"See A Man About a Dog: what you say as an excuse for leaving, in order to hide your destination; also, to excuse oneself to take a giant shit.",
+"Starkers: completely naked.",
+"Stonker: a boner.",
+"Sweet Fanny Adams: code for \"Sweet fuck all\", meaning little to nothing at all. (Example: \"I thought I had a chance with her, but I ended up with Sweet Fanny Adams.)",
+"Taking The Piss: messing or screwing around.",
+"Tosh: total bullshit, nonsense or rubbish.",
+"\"Who blew off?\": \"Who farted?\"",
+"Todger: another word for \"dick.\"",
+"Gagging: desperately need or want something",
+"Slap And Tickle: making out or heavy petting.",
+"Snookered: to be in a bad situation, totally fucked or otherwise without a paddle."
+]
+
 var britishisms = 
 ["Any road: used in place of \"any way,\" primarily used in the north of Britain.",
 "Baccy: shortened word for \"tobacco;\" also, \"wacky backy\" means marijuana.",
 "Bits ‘n Bobs: various things. (Example: \"My mother has a lot of Bits ‘n Bobs around the house.\")",
 "\"Bob’s your uncle!\": \"There you go! You’ve got it!\"",
-"Bollocks: technically means \"balls,\" but often describes something seen as extremely negative or lacking in value; e.g. \"total shit.\"",
-"\"Bugger off!\": \"Go away!\" or \"Leave me alone!\" (Note: Bugger, used on its own, is akin to \"Fuck!\" or \"Shit!\")",
 "Chav: white trash.",
 "Cheeky: to be not respectful of something, having a flippant or facetious attitude.",
 "Chin Wag: to have a chat with someone.",
 "Collywobbles: extreme queasiness or stomach pain brought on by stress, nervousness or anxiety.",
-"Crusty Dragon: a piece of snot or booger.",
 "Dog’s Bollocks: extremely good or favorable, great",
 "Dog’s Dinner: to be dressed nicely or look dapper.",
 "Donkey’s Years: ages, as in \"I haven’t seen you in ages!\"",
 "Fall Arse Over Tit: to have an embarrassing fall or to topple over.",
 "The Full Monty: going all the way with it, going big instead of going home.",
-"\"Get stuffed!\": \"Beat it\" or \"Scram!\"",
 "Gobby: loudly opinionated, offensive or prickish. (See: Donald Trump.)",
 "Gobsmacked: amazed or awed by something.",
 "Gormless: completely clueless, like Alicia Silverstone in the 90s film.",
@@ -178,32 +196,21 @@ var britishisms =
 "Her Majesty’s Pleasure: being incarcerated or put in prison.",
 "\"I’m Off To Bedfordshire!\": \"I’m hitting the hay!\"",
 "\"It’s Monkeys Outside!\": \"Wow, it’s very cold out!\"",
-"John Thomas: penis.",
 "Knackered: phrase meaning \"extremely tired,\" often uttered after a long, exhausting day; also see: \"zonked.\"",
 "Knees Up: A term for a mixer or a dance party (Example: \"I went to this wild knees up this weekend. I wish you could have been there.\")",
 "Legless: totally, completely hammered.",
 "Lurgy: sick or under the weather.",
 "Minted: to be extremely rich.",
-"Pavement Pizza: euphemism for puke or vomit.",
 "\"Pip pip!\": archaic, out-of-use phrase used to say goodbye.",
 "Plonk: a pejorative word used to describe red wine of poor quality, usually purchased at little expensive.",
 "Ponce: a poser.",
 "Porkies: old Cockney rhyming word used to mean \"lies.\" (Example: If one is \"telling porkies,\" you’re telling lies.) Comes from \"pork pies,\" which rhymes with lies.",
 "Puff: a fart.",
-"See A Man About a Dog: what you say as an excuse for leaving, in order to hide your destination; also, to excuse oneself to take a giant shit.",
 "Shambolic: in a total state of bedlam, chaos or dismay.",
 "Shirty: ill-tempered, insolent.",
-"Slap And Tickle: making out or heavy petting.",
 "Spend A Penny: to use the restroom.",
-"Snookered: to be in a bad situation, totally fucked or otherwise without a paddle.",
-"Starkers: completely naked.",
-"Stonker: a boner.",
-"Sweet Fanny Adams: code for \"Sweet fuck all\", meaning little to nothing at all. (Example: \"I thought I had a chance with her, but I ended up with Sweet Fanny Adams.)",
-"Taking The Piss: messing or screwing around.",
 "Throw A Spanner In The Works: to make a mistake or fuck up something.",
 "Tickety-Boo: phrase for when everything’s going great (Example: \"All is tickety-boo in my world.\")",
-"Todger: another word for \"dick.\"",
-"Tosh: total bullshit, nonsense or rubbish.",
 "Blimey: expressing surprise",
 "Fancy: like",
 "Fortnight: two Weeks",
@@ -229,9 +236,8 @@ var britishisms =
 "Mind the gap: to look where you are going",
 "Bants: to joke or exchange witty remarks with others ",
 "Ledge: exaggeration to make things and people sound more important, often for doing something great or incredible ",
-"Gagging: desperately need or want something",
-"Cracking: particularly good or excellent",
-"\"Who blew off?\": \"Who farted?\""];
+"Cracking: particularly good or excellent"
+];
 
 logger.remove(logger.transports.Console);
 logger.add(new logger.transports.Console, {
@@ -250,6 +256,7 @@ var mailList = []
 var mailInx = 0
 var mailChannel = 0
 var reservedUser 
+var beRude = true
 var nicknames = {}
 
 function getNicknames(members){
@@ -323,21 +330,6 @@ function setCharAt(str,index,chr) {
     return str.substr(0,index) + chr + str.substr(index+1);
 }
 
-function glitchy()
-{
-  console.log("Here we go...");
-  str1 = randomRangeInt(0,0xFFFF).toString(16);
-  str2 = randomRangeInt(0,0xFFFF).toString(16);
- 
-    
-        bot.sendMessage({
-            to:"613091515870347298",
-            message: str1 + "      " + str2})
-    
-    //Send mail every 15 to 45 mins.
-    setTimeout(glitchy,15);
-}
-
 
 function corruptString(string)
 {
@@ -367,7 +359,7 @@ bot.on('ready', function (evt) {
                 nicknames[c][member.id] = member.nick
         }
     }
-    setTimeout(updateSam, 10*1000);
+    setInterval(updateSam, 10*1000*60);
     
    
 });
@@ -394,16 +386,17 @@ StringBuilder.prototype.toString = function () {
 
 function getPctBar(percentage, messageLength)
 {
+    console.log(percentage)
     var arr = new Array(messageLength)
-    var filled = messageLength * percentage
+    var filled = Math.floor(messageLength * percentage)
     var rest = messageLength - filled
     for(var i = 0; i < filled; i++)
     {
-        arr[i] = '::'
+        arr[i] = '█'
     }
     for(var i = filled; i < messageLength; i++)
     {
-        arr[i] = '..'
+        arr[i] = '░'
     }
     return "[" + arr.join('') + "]"
 
@@ -414,7 +407,6 @@ function updateSam()
     food = Math.max(0, food-5);
     love = Math.max(0, love-7);
     tired = Math.min(100, tired + 2);
-    setTimeout(updateSam, 15*60*1000);
 }
 
 function judgeSam()
@@ -475,9 +467,15 @@ bot.on('message', function (user, userID, channelID, message, evt) {
             efault:
                 break;
             case 'slang':
+                var words = britishisms;
+                if (beRude)
+                {
+
+                    words = words.concat(rudebritishisms);
+                }
                 bot.sendMessage({
                     to: channelID,
-                    message: '<:samh:615034505161605140> Some british slang for you, mate! ' + britishisms[Math.floor(Math.random()*britishisms.length)]
+                    message: '<:samh:615034505161605140> Some british slang for you, mate! ' + words[Math.floor(Math.random()*words.length)]
                 });
                 break;
             case 'compliment':
@@ -522,6 +520,25 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 })
                 mailChannel = channelID
                 setTimeout(handleMail,0)
+                break;
+            case 'slap':
+                if(beRude)
+                {
+                    bot.sendMessage({
+                        to: channelID,
+                        message : " S'pose I earned that..."
+                    })
+                    beRude = false;
+                    //Disable being rude for 15 minutes.
+                    setTimeout(function(){beRude = true} ,15*3600*1000);
+                }
+                else
+                {
+                    bot.sendMessage({
+                        to: channelID,
+                        message : " Well, now you're just being mean!"
+                    })
+                }
                 break;
             case 'hug':
                getGiphy('hug', function(gif){
